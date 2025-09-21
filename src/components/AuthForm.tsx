@@ -68,7 +68,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
             {mode === 'signup' && (
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Name (optional)
+                  Name 
                 </label>
                 <Input
                   id="name"
@@ -138,7 +138,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
             >
               {loading ? 'Loading...' : (mode === 'login' ? 'Sign In' : 'Sign Up')}
             </Button>
-          </form>
+          </form> 
           
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
