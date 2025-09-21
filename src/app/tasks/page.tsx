@@ -103,7 +103,7 @@ export default function TasksPage() {
           {/* Task Form */}
           <div className="lg:col-span-1">
             {showTaskForm ? (
-              <TaskForm onSubmit={handleCreateTask} />
+              <TaskForm onSubmitAction={handleCreateTask} />
             ) : (
               <Card>
                 <CardContent className="p-6">
