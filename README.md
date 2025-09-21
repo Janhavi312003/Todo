@@ -1,36 +1,210 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Todo App - Full Stack Next.js Application
 
-## Getting Started
+A modern, full-stack todo application built with Next.js, TypeScript, and PostgreSQL. Features user authentication, task management, and a responsive UI.
 
-First, run the development server:
+## 🚀 Features
+
+- **User Authentication**: Secure signup/login with JWT tokens and bcrypt password hashing
+- **Task Management**: Full CRUD operations for tasks with due dates and descriptions
+- **Task Filtering**: Filter tasks by All, Pending, or Completed status
+- **Responsive Design**: Mobile-first design with Tailwind CSS and Shadcn/UI components
+- **Real-time Updates**: Instant UI updates with optimistic rendering
+- **Security**: Protected routes, input validation, and secure cookies
+- **Testing**: Comprehensive unit and integration tests
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS, Shadcn/UI components
+- **Backend**: Next.js API Routes
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: JWT tokens with HTTP-only cookies
+- **Testing**: Jest, React Testing Library
+- **Deployment**: Vercel-ready configuration
+
+## 📋 Prerequisites
+
+- Node.js 18+ 
+- PostgreSQL database
+- npm or yarn
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd curd_todo
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env` file in the root directory:
+
+```env
+# Database
+DATABASE_URL="postgresql://username:password@localhost:5432/todo_app?schema=public"
+
+# JWT Secret
+JWT_SECRET="your-super-secret-jwt-key-change-this-in-production"
+
+# Next.js
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-nextauth-secret-change-this-in-production"
+```
+
+### 4. Set up the database
+
+```bash
+# Generate Prisma client
+npx prisma generate
+
+# Run database migrations
+npx prisma migrate dev
+
+# (Optional) Seed the database
+npx prisma db seed
+```
+
+### 5. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧪 Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run the test suite:
 
-## Learn More
+```bash
+# Run all tests
+npm test
 
-To learn more about Next.js, take a look at the following resources:
+# Run tests in watch mode
+npm run test:watch
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Run tests with coverage
+npm run test:coverage
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── api/               # API routes
+│   │   ├── auth/          # Authentication endpoints
+│   │   └── tasks/         # Task management endpoints
+│   ├── auth/              # Authentication pages
+│   ├── tasks/             # Main tasks page
+│   └── globals.css        # Global styles
+├── components/            # Reusable UI components
+│   ├── ui/               # Base UI components
+│   ├── AuthForm.tsx      # Authentication form
+│   ├── Navbar.tsx        # Navigation component
+│   ├── TaskCard.tsx      # Individual task component
+│   ├── TaskForm.tsx      # Task creation form
+│   └── TaskFilter.tsx    # Task filtering component
+├── contexts/             # React contexts
+│   └── AuthContext.tsx   # Authentication state
+├── hooks/                # Custom React hooks
+│   └── useTasks.ts       # Task management hook
+├── lib/                  # Utility libraries
+│   ├── auth.ts           # Authentication utilities
+│   ├── prisma.ts         # Prisma client
+│   └── utils.ts          # General utilities
+└── __tests__/            # Test files
+    ├── api/              # API route tests
+    └── lib/              # Utility tests
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔐 API Endpoints
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Authentication
+- `POST /api/auth/signup` - Create new user account
+- `POST /api/auth/login` - User login
+- `POST /api/auth/logout` - User logout
+- `GET /api/auth/me` - Get current user
+
+### Tasks
+- `GET /api/tasks` - Get user's tasks (supports ?filter=all|pending|completed)
+- `POST /api/tasks` - Create new task
+- `PUT /api/tasks/[id]` - Update task
+- `DELETE /api/tasks/[id]` - Delete task
+
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Set environment variables in Vercel dashboard:
+   - `DATABASE_URL`
+   - `JWT_SECRET`
+   - `NEXTAUTH_URL`
+   - `NEXTAUTH_SECRET`
+4. Deploy!
+
+### Environment Variables for Production
+
+Make sure to set these in your production environment:
+
+```env
+DATABASE_URL="your-production-database-url"
+JWT_SECRET="your-production-jwt-secret"
+NEXTAUTH_URL="https://your-domain.com"
+NEXTAUTH_SECRET="your-production-nextauth-secret"
+```
+
+## 🔒 Security Features
+
+- Password hashing with bcrypt
+- JWT tokens stored in HTTP-only cookies
+- Protected API routes
+- Input validation and sanitization
+- CORS protection
+- Secure cookie settings
+
+## 📱 Responsive Design
+
+The application is fully responsive and works on:
+- Desktop computers
+- Tablets
+- Mobile phones
+
+## 🧪 Testing Strategy
+
+- **Unit Tests**: Test individual utility functions
+- **Integration Tests**: Test API routes and database interactions
+- **Component Tests**: Test React components (optional)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+If you encounter any issues or have questions, please:
+1. Check the existing issues
+2. Create a new issue with detailed information
+3. Include steps to reproduce any bugs
+
+---
+
+Built with ❤️ using Next.js, TypeScript, and modern web technologies.
