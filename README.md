@@ -41,19 +41,7 @@ This is a full-stack todo app that lets users create accounts, manage their task
    npm install
    ```
 
-3. Set up your environment variables
-   Create a `.env` file in the root directory with these variables:
-   ```env
-   # Database connection string
-   DATABASE_URL="postgresql://your-username:your-password@localhost:5432/todo_app?schema=public"
-   
-   # Security keys (make sure to use strong, unique values in production)
-   JWT_SECRET="your-secret-key-here"
-   NEXTAUTH_SECRET="another-secret-key-here"
-   NEXTAUTH_URL="http://localhost:3000"
-   ```
-
-4. Set up the database
+3. Set up the database
    ```bash
    # Generate Prisma client
    npx prisma generate
@@ -62,7 +50,7 @@ This is a full-stack todo app that lets users create accounts, manage their task
    npx prisma migrate dev
    ```
 
-5. Start the development server
+4. Start the development server
    ```bash
    npm run dev
    ```
