@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Todo App - Manage Your Tasks",
+  title: "Todo App",
   description: "A modern todo application with authentication and task management",
 };
 
